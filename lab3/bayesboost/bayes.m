@@ -1,0 +1,36 @@
+function [ mu, sigma ] = bayes( data )
+
+    mu = zeros(2,2);
+    sigma = zeros(2,2);
+    c = [0.0 1.0];
+    
+    for i = 1:2
+        M = 0;
+        for j = 1:size(data,1)
+            if data(j,3) == c(i)
+                M = M + 1;
+            end
+        end
+        M
+        for n = 1:2
+            for j = 1:size(data,1)
+                if data(j,3) == c(i)
+                    mu(i,n) = mu(i,n) + data(j,n);
+                end
+            end
+            if M ~= 0
+                mu(i,n) = mu(i,n) ./ M;
+            end
+            for j = 1:size(data,1)
+                if data(j,3) == c(i)
+                    sigma(i,n) = sigma(i,n) + (data(j,n) - mu(i,n)).^2;
+                end
+            end
+            if M ~= 0
+                sigma(i,n) = sigma(i,n) ./ M;
+            end
+        end
+    end
+
+end
+
