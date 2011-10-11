@@ -11,7 +11,6 @@ function [ mu, sigma ] = bayes( data )
                 M = M + 1;
             end
         end
-        M
         for n = 1:2
             for j = 1:size(data,1)
                 if data(j,3) == c(i)
