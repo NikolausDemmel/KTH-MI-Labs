@@ -2,6 +2,7 @@ import monkdata as m
 import dtree
 from itertools import izip, count
 import random
+from pylab import *
 
 def gainTable(dataset):
 	"Returns the information gain for all attributes as a list"
@@ -80,7 +81,14 @@ def generateErrorTable(dataset, testset, fractions, tries):
             acc += dtree.check(prunedTree, testset)
         result.append( (x,acc / tries) )
     return result
-	
+
+def plotPruning():
+    fractions = [.3,.4,.5,.6,.7,.8]
+    monk1 = [.766,.788,.799,.797,.802,.780]
+    monk3 = [.920,.939,.951,.966,.963,.967]
+    plot(fractions, monk1, 'bo', markerfacecolor='green')
+    grid(True)
+    show()
 
 
 
