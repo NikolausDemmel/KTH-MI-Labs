@@ -83,12 +83,15 @@ def generateErrorTable(dataset, testset, fractions, tries):
     return result
 
 def plotPruning():
-    fractions = [.3,.4,.5,.6,.7,.8]
-    monk1 = [.766,.788,.799,.797,.802,.780]
-    monk3 = [.920,.939,.951,.966,.963,.967]
-    plot(fractions, monk1, 'bo', markerfacecolor='green')
-    grid(True)
-    show()
+	fractions = [.3,.4,.5,.6,.7,.8]
+	monk1 = [.766,.788,.799,.797,.802,.780]
+	monk3 = [.920,.939,.951,.966,.963,.967]
+	plot(fractions, monk1, 'go--', fractions, monk3, 'ro--')
+	title('Performance of Trees after Pruning (Red = Monk3, Green = Monk1)')
+	xlabel('fraction of training data used to build tree')
+	ylabel('Performance of final pruned tree (fraction of correctly classified test data)')    
+	grid(True)
+	show()
 
 
 
